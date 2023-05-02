@@ -1,51 +1,109 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     margin:0;
     padding:0;
-    font-family: "apercu",sans-serif;
+    font-family: Meiryo, "Hiragino Kaku Gothic Pro W3", Courier New, sans-serif;
+    background-color: #efefef;
    
 }
 
 
 #__next{
-    height: 100vh;
+    min-height: 100vh;
     width:100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
   }
 
-input{
-    font-family: "apercu",sans-serif;
-    background-color: #383838;
-    color:'#fff';
-    padding:5px;
-    font-size:16px;
-    width:600px;
-    border: 0;
-    border-radius: 8px;
-    height:24px;
-    color: #f3f3f3;
-}
 
 li {
     list-style-type: none;
     display: flex;
-    flex-direction: row;
     padding: 5px;
-    color: #f3f3f3;
-  }
+    color: #353a48;
+    box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
+    background-color: #ffffff;
+    font-size: 10px;
+}
 
+li:hover{
+    background-color: #efefef;
+    cursor: pointer;
+}
 .listitems{
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 15px;
+    color: black;
+ 
 
 }
 .artist{
-    font-size: 16px;
+    font-size: 1em;
+    font-weight: 600;
 }
 .song{
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 1.2em;
+    font-weight: 900;
+    
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    max-width: 600px;
+    margin: 50px auto
+}
+
+.searchinput{
+  background: #fff;
+  width: 600px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+
+}
+
+.searchinput input{
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+    padding-left: 15px;
+    
+}
+
+.searchbox{
+    padding: 0;
+    max-height: 220px;
+    overflow: auto;
+    width: 100%;
+    color: black;
+}
+
+.western{
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+
+}
+.cyber{
+    height: 300px;
+    background-image: url('https://i.scdn.co/image/ab67616d00001e0288f6bc3b9d1ef64e87fdf7e0');
+    background-size:contain;
+    width:300px;
+    margin-bottom: 200px;
 }
