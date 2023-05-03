@@ -1,18 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { getAccessToken } from "../utils/supabase";
 import { fetchAccessToken } from "../utils/authUtils";
-
+import { MouseEventHandler } from 'react';
+import Image from "next/image";
 
 export default function Page() {
   const[query,setQuery]=useState<string>('')
-  const[searchResults,setSearchResults]=useState<string[]>([])
-  
+  const[searchResults,setSearchResults]=useState([])
+  const[artistId,setArtistId] = useState('')
+  const[trackId,setTrackId] = useState('')
+
+
+
+  function assignIdState(object){
+  setArtistId(object.artists[0].id)
+  setTrackId(object.id)
+  }
+
+  // run the search function whenever the query is updated
   function handleInput(e){
     setQuery(e.target.value)
     search(query)
   }
+  // fetch a new access token every hour
+  useEffect(() => {
+  const intervalId = setInterval(() => {
+    fetchAccessToken()
+    }, 3600000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
 
   async function search(query:string) {
@@ -41,14 +62,63 @@ export default function Page() {
       }
     }
 
-    return <div>
-    <div className="wrapper">
-      <div className="searchinput">
-        <input onChange={handleInput}/>
-       
-      </div>
+    async function getRecommendations(){
+      const accesstoken = await getAccessToken()
+      const headers = {
+        headers: {
+          'Authorization': 'Bearer ' + accesstoken
+        }
       
-    </div>
+    }
+    const request = await fetch(`https://api.spotify.com/v1/recommendations?seed_artists=${artistId}&seed_genres=classical%2Ccountry&seed_tracks=${trackId}`,headers)
+    const result = await request.json()
+    console.log(result)
+  }
 
-    </div>
+    function SearchResultList({ searchResults,}) {
+
+
+
+
+    
+      
+    
+    
+      const listItems = searchResults && searchResults.map(person => (
+        <li  onClick={()=>assignIdState(person)}>
+          <img src={person.album.images[2].url}/>
+          <div className="listitems">
+            <div  className="song">{person.name}</div>
+            <div className="artist">{person.artists[0].name}</div>
+          </div>
+        </li>
+      ));
+    
+      return (
+        <>
+          <ul className="searchbox">{listItems}</ul>
+        </>
+        
+      );
+    }
+
+    return(
+    <>
+      <div className="header">
+      <div className="headerName">SpotSync</div>
+      <div className="svg"><div className="svgText">Powered by Spotify</div><Image src='/SpotifyBlack.svg' alt="my svg" height={30} width={30}/></div>
+      </div>
+      <div className="content">
+        <h1>Explore new <span className="musicSpan">music</span> recommendations</h1>
+        <h2>Use the tunes you love to find the tunes you'll love.</h2>
+        </div>
+      <div className="wrapper">
+        <div className="searchinput">
+          {/* <button onClick={getRecommendations}></button> */}
+          <input onChange={handleInput}/>
+          {query.length>0?<SearchResultList searchResults={searchResults}/>:null}
+        </div>
+      </div>
+    </>
+    )
   }

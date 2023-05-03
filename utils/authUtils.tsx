@@ -1,5 +1,7 @@
 import { updateAccessToken } from "./supabase";
 
+
+
 export async function fetchAccessToken() {
     const refresh_token = process.env.NEXT_PUBLIC_REFRESH_TOKEN
     const client_id = process.env.NEXT_PUBLIC_CLIENT_ID
@@ -21,5 +23,7 @@ export async function fetchAccessToken() {
     console.log(data)
     updateAccessToken(1,data.access_token)
      
-}
-  
+  }
+
+
+

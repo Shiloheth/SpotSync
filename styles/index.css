@@ -5,8 +5,8 @@
 body{
     margin:0;
     padding:0;
-    font-family: Meiryo, "Hiragino Kaku Gothic Pro W3", Courier New, sans-serif;
-    background-color: #efefef;
+    font-family: Meiryo, Open Sans,Arial,sans-serif;
+    background-color: #fff;
    
 }
 
@@ -27,6 +27,7 @@ li {
     box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
     background-color: #ffffff;
     font-size: 10px;
+    height: 50px;
 }
 
 li:hover{
@@ -38,25 +39,21 @@ li:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 15px;
+    font-size: 1.5em;
     color: black;
  
 
 }
 .artist{
-    font-size: 1em;
-    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: 300;
 }
 .song{
-    font-size: 1.2em;
-    font-weight: 900;
+    font-size: 1em;
+    font-weight: 500;
     
 }
 
-ul{
-    margin: 0;
-    padding: 0;
-}
 
 .wrapper{
     max-width: 600px;
@@ -67,16 +64,16 @@ ul{
   background: #fff;
   width: 600px;
   border-radius: 5px;
-  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.12);
 
 }
 
 .searchinput input{
-    height: 55px;
+    height: 40px;
     width: 100%;
     outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px 50px 0 0 ;
     font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
     padding-left: 15px;
@@ -85,10 +82,13 @@ ul{
 
 .searchbox{
     padding: 0;
-    max-height: 220px;
+    max-height: 250px;
     overflow: auto;
     width: 100%;
     color: black;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
 }
 
 .western{
@@ -106,4 +106,56 @@ ul{
     background-size:contain;
     width:300px;
     margin-bottom: 200px;
+}
+
+.header{
+    max-width: 100%;
+    position: relative;
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.12);
+    font-size: 16px;
+    font-weight: 800;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.svg{
+   display: flex;
+   align-items: center;
+}
+
+.content{
+    text-align: center;
+    width: 100%;
+    padding:55px 0px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.svgText{
+    margin-right: 10px;
+ 
+}
+.headerName{
+    color: #f55224;
+}
+
+h1{
+    font-size: 2em;
+    line-height: 2em;
+    letter-spacing: -1.3px;
+    
+}
+
+h2{
+ font-size: 1em;
+ font-weight: 300;
+}
+
+.musicSpan{
+    color:#f55224
 }
