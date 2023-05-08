@@ -1,13 +1,16 @@
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body{
     margin:0;
     padding:0;
     font-family: Meiryo, Open Sans,Arial,sans-serif;
-    background-color: #fff;
-   
+    background-color: #f2f2f2;
+    color: #000;
+    font-size: 14px;
 }
 
 
@@ -19,18 +22,38 @@ body{
   }
 
 
-li {
+  .recommendedList{
+    width:750px;
+    float:left
+  }
+
+
+ .recommendedLi {
     list-style-type: none;
     display: flex;
     padding: 5px;
     color: #353a48;
     box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
-    background-color: #ffffff;
+    background-color: #d0d5d4;
     font-size: 10px;
     height: 50px;
+    border-radius: 10px;
 }
 
-li:hover{
+.searchresultsli{
+    list-style-type: none;
+    display: flex;
+    padding: 5px;
+    color: #353a48;
+    box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
+    background-color: #d0d5d4;
+    font-size: 10px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+
+.searchresultsli:hover{
     background-color: #efefef;
     cursor: pointer;
 }
@@ -41,6 +64,7 @@ li:hover{
     justify-content: center;
     font-size: 1.5em;
     color: black;
+    width:200px
  
 
 }
@@ -56,75 +80,82 @@ li:hover{
 
 
 .wrapper{
-    max-width: 600px;
-    margin: 50px auto
+    width: 100%;
+    background: #fff;
+
+
+
+}
+.searchcontent{
+    display: block;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 4px 14px 0 rgba(0,0,0,.05);
+    padding: 8px 0;
 }
 
+.searchmain{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+
 .searchinput{
-  background: #fff;
-  width: 600px;
-  border-radius: 5px;
-  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.12);
+    position: relative;
+    display: flex;
+    width: 750px;
 
 }
 
 .searchinput input{
     height: 40px;
-    width: 100%;
+    flex:1;
     outline: none;
     border: none;
-    border-radius: 50px 50px 0 0 ;
     font-size: 18px;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
-    padding-left: 15px;
+    display: flex;
+    background: #f5f6f7;
     
+}
+
+.searchboxmain{
+    width:1200px;
+    margin: 0 auto;
 }
 
 .searchbox{
     padding: 0;
     max-height: 250px;
+    width:750px;
     overflow: auto;
-    width: 100%;
     color: black;
     margin: 0;
     padding: 0;
     font-size: 10px;
+    background: #f5f6f7;
+    border: 3px solid #f5f6f7;
+    position: absolute;
 }
 
-.western{
-    height: 100vh;
-    width:100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
 
-}
-.cyber{
-    height: 300px;
-    background-image: url('https://i.scdn.co/image/ab67616d00001e0288f6bc3b9d1ef64e87fdf7e0');
-    background-size:contain;
-    width:300px;
-    margin-bottom: 200px;
-}
+
+
 
 .header{
     max-width: 100%;
     position: relative;
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.12);
-    font-size: 16px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.12);
+    font-size: 1.2em;
     font-weight: 800;
-    padding: 15px;
+    height: 48px;
+    padding: 0 15px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    line-height: 48px; 
 
-}
-
-.svg{
-   display: flex;
-   align-items: center;
 }
 
 .content{
@@ -140,9 +171,7 @@ li:hover{
     margin-right: 10px;
  
 }
-.headerName{
-    color: #f55224;
-}
+
 
 h1{
     font-size: 2em;
@@ -159,3 +188,53 @@ h2{
 .musicSpan{
     color:#f55224
 }
+
+.container{
+    width: 1200px;
+    margin: auto;
+}
+
+
+
+  .musicImage {
+    width: 280px;
+    height: 280px;
+    background-size: contain;
+    z-index: 999;
+    position: relative;
+
+  }
+
+  .background {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 1.5;
+    filter: blur(100px);
+    border: 0;
+  }
+  
+
+
+  .blurry-bg {
+    width: 200px;
+    height: 300px;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top:0
+   
+}
+
+
+
+
+
+
+

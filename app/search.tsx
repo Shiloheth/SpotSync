@@ -3,39 +3,27 @@
 import { useState,useEffect } from "react";
 import { getAccessToken } from "../utils/supabase";
 import { fetchAccessToken } from "../utils/authUtils";
-import { MouseEventHandler } from 'react';
-import Image from "next/image";
+import { useRef } from 'react';
+import { RecommendedList } from "../components/recommendedlist";
+import SearchResultList from "../components/searchresults";
+
 
 export default function Page() {
   const[query,setQuery]=useState<string>('')
   const[searchResults,setSearchResults]=useState([])
-  const[artistId,setArtistId] = useState('')
-  const[trackId,setTrackId] = useState('')
+  const [recommendations,setRecommendations]=useState([])
+  const divRef = useRef(null);
+  const blurRef = useRef(null)
+  const audioRef = useRef(null)
 
-
-
-  function assignIdState(object){
-  setArtistId(object.artists[0].id)
-  setTrackId(object.id)
-  }
 
   // run the search function whenever the query is updated
-  function handleInput(e){
+  function handleInput(e) {
     setQuery(e.target.value)
     search(query)
   }
-  // fetch a new access token every hour
-  useEffect(() => {
-  const intervalId = setInterval(() => {
-    fetchAccessToken()
-    }, 3600000);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
-
+  
   async function search(query:string) {
     const accesstoken = await getAccessToken()
     const headers = {
@@ -45,10 +33,11 @@ export default function Page() {
     }
     try{
       const request = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=track`, headers)
-      console.log(request)
+     
       if(!request.ok){
         const text = await request.json()
-        throw new Error(text.error.message)}
+        throw new Error(text.error.message)
+      }
       else{
         const result = await request.json()
         setSearchResults(result.tracks?.items)
@@ -57,68 +46,66 @@ export default function Page() {
     }
     catch(error){
       console.log(error)
-      if(error.message==='The access token expired'){
-        fetchAccessToken()}
+      if(error.message === 'The access token expired') {
+        fetchAccessToken()
       }
     }
+  }
+   
 
-    async function getRecommendations(){
-      const accesstoken = await getAccessToken()
-      const headers = {
-        headers: {
-          'Authorization': 'Bearer ' + accesstoken
-        }
-      
+  async function getRecommendations(artistId, trackId) {
+    const accesstoken = await getAccessToken()
+    const headers = {
+      headers: {
+        'Authorization': 'Bearer ' + accesstoken
+      }
     }
     const request = await fetch(`https://api.spotify.com/v1/recommendations?seed_artists=${artistId}&seed_genres=classical%2Ccountry&seed_tracks=${trackId}`,headers)
     const result = await request.json()
-    console.log(result)
+    setRecommendations(result.tracks)
+  }
+     
+
+  function handleClick(person) {
+    setQuery('')
+    getRecommendations(person.artists[0].id,person.id)
+    
   }
 
-    function SearchResultList({ searchResults,}) {
+
+  function handleAudioPlay(audioUrl) {
+  const audioElement = new Audio(audioUrl);
+  console.log(audioElement.currentSrc)
+  audioElement.play();
+  }
 
 
+  function hover(person) {
+    console.log(person)
+    divRef.current.style.backgroundImage = `url(${person.album.images[0].url})`;
+    blurRef.current.style.backgroundImage = `url(${person.album.images[1].url})`;
+    handleAudioPlay(person.preview_url);
+  }
+  
 
 
-    
-      
-    
-    
-      const listItems = searchResults && searchResults.map(person => (
-        <li  onClick={()=>assignIdState(person)}>
-          <img src={person.album.images[2].url}/>
-          <div className="listitems">
-            <div  className="song">{person.name}</div>
-            <div className="artist">{person.artists[0].name}</div>
-          </div>
-        </li>
-      ));
-    
-      return (
-        <>
-          <ul className="searchbox">{listItems}</ul>
-        </>
-        
-      );
-    }
-
-    return(
+  return (
     <>
-      <div className="header">
-      <div className="headerName">SpotSync</div>
-      <div className="svg"><div className="svgText">Powered by Spotify</div><Image src='/SpotifyBlack.svg' alt="my svg" height={30} width={30}/></div>
-      </div>
-      <div className="content">
-        <h1>Explore new <span className="musicSpan">music</span> recommendations</h1>
-        <h2>Use the tunes you love to find the tunes you'll love.</h2>
-        </div>
+
       <div className="wrapper">
-        <div className="searchinput">
+        <div className="searchcontent">
+          <div className="searchmain">
+          <div className="searchinput">
           {/* <button onClick={getRecommendations}></button> */}
-          <input onChange={handleInput}/>
-          {query.length>0?<SearchResultList searchResults={searchResults}/>:null}
+          <input value={query} onChange={handleInput}/>
+         
+        </div>
+        </div>
         </div>
       </div>
+      {query.length>0?<SearchResultList searchResults={searchResults} handleClick={handleClick}/>:null}
+      <div className="container">{<RecommendedList rec={recommendations} hover={hover}/>}<div className="test"><div className="blurry-bg"  ><div className="background" ref={blurRef}></div><div className="musicImage" ref={divRef}></div></div></div></div>
+
     </>
-    )
-  }
+  )
+}

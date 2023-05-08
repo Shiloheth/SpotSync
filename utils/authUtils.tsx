@@ -20,7 +20,6 @@ export async function fetchAccessToken() {
     
     const res = await fetch(url, authOptions);
     const data = await res.json();
-    console.log(data)
     updateAccessToken(1,data.access_token)
      
   }
