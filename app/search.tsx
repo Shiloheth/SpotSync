@@ -4,9 +4,8 @@ import { useState,useEffect } from "react";
 import { getAccessToken } from "../utils/supabase";
 import { fetchAccessToken } from "../utils/authUtils";
 import { useRef } from 'react';
-import { RecommendedList } from "../components/recommendedlist";
 import SearchResultList from "../components/searchresults";
-
+import RecommendedList from "../components/recommendedlist";
 
 export default function Page() {
   const[query,setQuery]=useState<string>('')
@@ -14,7 +13,7 @@ export default function Page() {
   const [recommendations,setRecommendations]=useState([])
   const divRef = useRef(null);
   const blurRef = useRef(null)
-  const audioRef = useRef(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
 
   // run the search function whenever the query is updated
@@ -78,15 +77,22 @@ export default function Page() {
   console.log(audioElement.currentSrc)
   audioElement.play();
   }
+  function handleAudioPause(){
+    
+  }
 
-
-  function hover(person) {
-    console.log(person)
+  function hover(person:any) {
+    console.log(audioRef.current)
     divRef.current.style.backgroundImage = `url(${person.album.images[0].url})`;
     blurRef.current.style.backgroundImage = `url(${person.album.images[1].url})`;
-    handleAudioPlay(person.preview_url);
+    audioRef.current.src =  person.preview_url
+    audioRef.current.play()
   }
   
+  function pauseAudio(){
+    audioRef.current.pause()
+  }
+
 
 
   return (
@@ -104,7 +110,7 @@ export default function Page() {
         </div>
       </div>
       {query.length>0?<SearchResultList searchResults={searchResults} handleClick={handleClick}/>:null}
-      <div className="container">{<RecommendedList rec={recommendations} hover={hover}/>}<div className="test"><div className="blurry-bg"  ><div className="background" ref={blurRef}></div><div className="musicImage" ref={divRef}></div></div></div></div>
+      <div className="container">{<RecommendedList rec={recommendations} hover={hover} audio={audioRef} pause={pauseAudio}/>}<div className="blurry-bg"  ><div className="background" ref={blurRef}></div><div className="musicImage" ref={divRef}></div></div></div>
 
     </>
   )
