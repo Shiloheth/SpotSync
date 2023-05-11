@@ -212,7 +212,8 @@ h2{
     width: 1200px;
     margin: auto;
     margin-top: 14px;
-    position: relative;
+    display: flex;
+  
 }
 
 
@@ -243,18 +244,16 @@ h2{
 
 
   .blurry-bg {
-    max-width: 640px;
+    min-width: 400px;
     height: 640px;
     background-size:cover;
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
-    top:0px;
+    top: 0;
    
 }
-
-
 
 
 
