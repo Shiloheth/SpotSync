@@ -4,10 +4,15 @@
     padding: 0;
 }
 
+html {
+    font-size: 16px;
+  }
+  
+
 body{
     margin:0;
     padding:0;
-    font-family: Meiryo, Open Sans,Arial,sans-serif;
+    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     background-color: #f2f2f2;
     color: #000;
     font-size: 14px;
@@ -24,7 +29,8 @@ body{
 
   .recommendedList{
     width:750px;
-    float:left
+    float:left;
+   
   }
 
 
@@ -34,10 +40,11 @@ body{
     padding: 5px;
     color: #353a48;
     box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
-    background-color: #d0d5d4;
     font-size: 10px;
     height: 50px;
     border-radius: 10px;
+    background-color: #cfd3d3;
+    margin:10px
 }
 
 .searchresultsli{
@@ -48,7 +55,6 @@ body{
     box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
     background-color: #d0d5d4;
     font-size: 10px;
-    height: 50px;
     border-radius: 10px;
 }
 
@@ -64,18 +70,21 @@ body{
     justify-content: center;
     font-size: 1.5em;
     color: black;
-    width:200px
+    width:100%
  
 
 }
 .artist{
     font-size: 0.9em;
     font-weight: 300;
+    width: 100%;
+    height: 100%;
 }
 .song{
     font-size: 1em;
     font-weight: 500;
-    
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -109,14 +118,15 @@ body{
 }
 
 .searchinput input{
-    height: 40px;
+    height: 2.5rem;
     flex:1;
     outline: none;
     border: none;
-    font-size: 18px;
+    font-size: 1rem;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
     display: flex;
     background: #f5f6f7;
+    text-indent: 1rem;
     
 }
 
@@ -144,18 +154,22 @@ body{
 
 
 .header{
-    max-width: 100%;
     position: relative;
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.12);
-    font-size: 1.2em;
-    font-weight: 800;
-    height: 48px;
+    max-width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    height: 3rem;
     padding: 0 15px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    line-height: 48px; 
+    line-height: 3rem; 
+    background-color: #fff;
 
+}
+
+.headerName{
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .content{
@@ -164,11 +178,16 @@ body{
     padding:55px 0px;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1.8em;
+    
 }
 
-.svgText{
-    margin-right: 10px;
+.headerImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+    font-weight: 600;
  
 }
 
@@ -192,13 +211,15 @@ h2{
 .container{
     width: 1200px;
     margin: auto;
+    margin-top: 14px;
+    position: relative;
 }
 
 
 
   .musicImage {
-    width: 280px;
-    height: 280px;
+    width: 200px;
+    height: 200px;
     background-size: contain;
     z-index: 999;
     position: relative;
@@ -213,25 +234,25 @@ h2{
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 1.5;
-    filter: blur(100px);
+    opacity: .7;
+    filter: blur(20px);
     border: 0;
+    
   }
   
 
 
   .blurry-bg {
-    width: 200px;
-    height: 300px;
-    background-size: contain;
+    max-width: 640px;
+    height: 640px;
+    background-size:cover;
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
-    top:0
+    top:0px;
    
 }
-
 
 
 
