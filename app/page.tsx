@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import '../styles/index.css'
-import Page from './search'
+import Page from './homepage'
 import { Header } from '../components/header'
 
 

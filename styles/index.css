@@ -13,9 +13,10 @@ body{
     margin:0;
     padding:0;
     font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    background-color: #f2f2f2;
-    color: #000;
+    background-color: #232529;
+    color: #FAFAFA;
     font-size: 14px;
+    
 }
 
 
@@ -29,7 +30,6 @@ body{
 
   .recommendedList{
     width:750px;
-    float:left;
    
   }
 
@@ -39,13 +39,17 @@ body{
     display: flex;
     padding: 5px;
     color: #353a48;
-    box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
-    font-size: 10px;
+    font-size: 0.6rem;
     height: 50px;
     border-radius: 10px;
-    background-color: #cfd3d3;
+    background-color: #282a36;
     margin:10px
 }
+
+.recommendedLi:hover{
+    background-color: #888888;
+}
+
 
 .searchresultsli{
     list-style-type: none;
@@ -53,14 +57,13 @@ body{
     padding: 5px;
     color: #353a48;
     box-shadow: 0px 1px 1px 1.5px rgba(0,0,0,0.12);
-    background-color: #d0d5d4;
     font-size: 10px;
     border-radius: 10px;
 }
 
 
 .searchresultsli:hover{
-    background-color: #efefef;
+    background-color: #888888;
     cursor: pointer;
 }
 .listitems{
@@ -69,7 +72,7 @@ body{
     flex-direction: column;
     justify-content: center;
     font-size: 1.5em;
-    color: black;
+    color:#FAFAFA;
     width:100%
  
 
@@ -90,17 +93,13 @@ body{
 
 .wrapper{
     width: 100%;
-    background: #fff;
-
-
-
 }
+
 .searchcontent{
     display: block;
     width: 100%;
-    background: #fff;
-    box-shadow: 0 4px 14px 0 rgba(0,0,0,.05);
     padding: 8px 0;
+
 }
 
 .searchmain{
@@ -114,6 +113,8 @@ body{
     position: relative;
     display: flex;
     width: 750px;
+    border:1px solid #FAFAFA;
+    border-radius: 0.1rem;
 
 }
 
@@ -121,12 +122,13 @@ body{
     height: 2.5rem;
     flex:1;
     outline: none;
-    border: none;
+    border-width: 0;
     font-size: 1rem;
-    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
     display: flex;
-    background: #f5f6f7;
     text-indent: 1rem;
+    background: #232529;
+    color: #FAFAFA;
+    font-weight: 700;
     
 }
 
@@ -140,13 +142,15 @@ body{
     max-height: 250px;
     width:750px;
     overflow: auto;
-    color: black;
+    color: #FAFAFA;
     margin: 0;
     padding: 0;
     font-size: 10px;
-    background: #f5f6f7;
-    border: 3px solid #f5f6f7;
     position: absolute;
+    border-radius: 0.4rem;
+    border:1px solid #FAFAFA;
+    background-color: #232529;
+  
 }
 
 
@@ -156,14 +160,14 @@ body{
 .header{
     position: relative;
     max-width: 100%;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    border-bottom: 4px solid #35383f;
     height: 3rem;
     padding: 0 15px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     line-height: 3rem; 
-    background-color: #fff;
+
 
 }
 
@@ -211,8 +215,9 @@ h2{
 .container{
     width: 1200px;
     margin: auto;
-    margin-top: 14px;
+    margin-top: 1rem;
     display: flex;
+    
   
 }
 
@@ -244,17 +249,25 @@ h2{
 
 
   .blurry-bg {
-    min-width: 400px;
+    width: 790px;
     height: 640px;
-    background-size:cover;
+    background-size:contain;
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
-    top: 0;
-   
+    top: 8rem;
+    flex-shrink: 9999;
+    margin-left: 1rem;
 }
 
-
+.intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  
+}
 
 

@@ -1,5 +1,4 @@
 
-
 export default function SearchResultList({ searchResults,handleClick}) {
    
     const listItems = searchResults && searchResults.map(person => (
@@ -18,4 +17,4 @@ export default function SearchResultList({ searchResults,handleClick}) {
       </div>
       
     );
-  }
+}
