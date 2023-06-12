@@ -11,9 +11,7 @@ export default function Layout({ children }) {
       <head>
         <title>SpotSync</title>
       </head>
-      <body className={inter.className}>
-        <div className="relative bg-[#000000]">{children}</div>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
