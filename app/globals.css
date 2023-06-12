@@ -32,8 +32,8 @@
   width: 100%;
   opacity: 0.7;
   height: 100%;
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: highlight-animation;
   animation-timing-function: linear;
@@ -50,10 +50,10 @@
 /*  Keyframes */
 @keyframes highlight-animation {
   0% {
-    background-position: -490px 0;
+    background-position: -900px 0;
   }
   100% {
-    background-position: 490px 0;
+    background-position: 900px 0;
   }
 }
 
@@ -63,6 +63,7 @@
   background: #323232;
   grid-row: 1 / 4;
   border-radius: 100%;
+  margin: 3px;
 }
 
 .skeleton .s-line {

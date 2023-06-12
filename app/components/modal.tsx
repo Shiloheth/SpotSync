@@ -7,17 +7,17 @@ import Loader from "./loader";
 export default function Modal({ searchModal }) {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const debounceTimer = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 1200);
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
 
-  //   return () => {
-  //     clearTimeout(debounceTimer); // Clear the debounce timer on component unmount or when the input value changes
-  //   };
-  // }, [isLoading]);
+    return () => {
+      clearTimeout(debounceTimer); // Clear the debounce timer on component unmount or when the input value changes
+    };
+  }, [isLoading]);
 
   function handleInput(e) {
     setQuery(e.target.value);
@@ -56,11 +56,11 @@ export default function Modal({ searchModal }) {
   return (
     <>
       {searchModal ? (
-        <div className="absolute top-0 bg-[#777777] w-full p-6 backdrop-blur	">
-          <div className="bg-[#000000]">
-            <header className=" mx-4 bg-[#111111] h-4/5 overflow-y-auto rounded-lg">
-              <div className="flex items-center px-2 bg-[#323232] ">
-                <div className="text-gray-950	pr-2">
+        <div className="absolute top-0 bg-[#808080] w-full p-6 backdrop-blur">
+          <div className="bg-[#000000] rounded-lg">
+            <header className="h-16 overflow-y-auto rounded-lg items-center justify-center flex w-full">
+              <div className="flex items-center px-2 bg-[#323232] rounded w-full mx-4">
+                <div className="text-gray-950	pr-2 absolute">
                   <svg
                     width="24"
                     height="24"
@@ -76,21 +76,25 @@ export default function Modal({ searchModal }) {
                   </svg>
                 </div>
                 <input
-                  className="flex flex-1 bg-[#323232] h-12"
+                  className="flex flex-1 bg-[#323232] h-12 pl-8"
                   placeholder="Search..."
                   value={query}
                   onChange={handleInput}
                 />
               </div>
             </header>
-            <div className="w-full h-[1px] bg-[#000000]"></div>
-            <div className="my-2 px-2 ">
-              {" "}
+
+            <div className=" mx-4">
               {isLoading ? (
                 <Loader />
               ) : (
                 <SearchResultList searchResults={searchResults} />
               )}
+              {query.length === 0 ? (
+                <p className="text-white px-6 py-14 text-center	r">
+                  No Recent Searches
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

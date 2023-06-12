@@ -6,7 +6,7 @@ export default function SearchResultList({ searchResults }) {
     searchResults &&
     searchResults.map((person) => (
       <li
-        className="flex items-center py-2 text-white bg-[#424242] p-4 rounded m-3"
+        className="flex items-center text-white bg-[#424242] p-2 rounded mt-2"
         onClick={() => {
           handleClick(person);
         }}
@@ -21,7 +21,7 @@ export default function SearchResultList({ searchResults }) {
 
   return (
     <div>
-      <ul>{listItems}</ul>
+      <ul className="pb-2">{listItems}</ul>
     </div>
   );
 }
