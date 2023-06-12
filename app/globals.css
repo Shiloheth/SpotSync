@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes skeleton-animation {
+  0% {
+    right: 100%;
+  }
+
+  50% {
+    right: -128px;
+  }
+
+  100% {
+    right: 100%;
+  }
+}
+
+.skeleton {
+  overflow: hidden;
+  width: 100%;
+  height: 78px;
+  display: grid;
+  grid-template-columns: 50px 100%;
+  grid-gap: 8px;
+  position: relative;
+  background-color: #111;
+}
+
+.highlight {
+  background-color: #e7e7e7;
+  width: 100%;
+  opacity: 0.7;
+  height: 100%;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: highlight-animation;
+  animation-timing-function: linear;
+
+  background-image: -webkit-linear-gradient(
+    left,
+    #111111 0%,
+    #222222 33%,
+    #111111 66%,
+    #111111 100%
+  );
+}
+
+/*  Keyframes */
+@keyframes highlight-animation {
+  0% {
+    background-position: -490px 0;
+  }
+  100% {
+    background-position: 490px 0;
+  }
+}
+
+.skeleton .s-img {
+  width: 48px;
+  height: 48px;
+  background: #323232;
+  grid-row: 1 / 4;
+  border-radius: 100%;
+}
+
+.skeleton .s-line {
+  height: 20px;
+  background: #444;
+}
+
+.skeleton .s-line.first {
+  width: 50%;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.skeleton .s-line.second {
+  width: 70%;
+  border-radius: 5px;
+}
+
+.skeleton .s-line.third {
+  width: 50%;
+}
