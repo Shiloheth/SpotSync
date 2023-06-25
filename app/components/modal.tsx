@@ -56,7 +56,7 @@ export default function Modal({ searchModal }) {
   return (
     <>
       {searchModal ? (
-        <div className="absolute top-0 bg-[#808080] w-full p-6 backdrop-blur">
+        <div className="absolute top-0 bg-[#222222] w-full p-6 backdrop-blur h-full">
           <div className="bg-[#000000] rounded-lg">
             <header className="h-16 overflow-y-auto rounded-lg items-center justify-center flex w-full">
               <div className="flex items-center px-2 bg-[#323232] rounded w-full mx-4">
